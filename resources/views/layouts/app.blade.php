@@ -27,12 +27,8 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Página inicial
                 </a>
-                <a class="navbar-brand" href="{{ url('/abrigo/cadastrar-morador') }}">
-                    Cadastrar Morador
-                </a>
-                <a class="navbar-brand" href="{{ url('/abrigo/lista-moradores') }}">
-                    Listar Moradores
-                </a>
+
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -40,7 +36,17 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/abrigo/cadastrar-morador') }}">
+                                Cadastrar Morador
+                            </a>
+                        </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/abrigo/lista-moradores') }}">
+                                Listar Moradores
+                            </a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

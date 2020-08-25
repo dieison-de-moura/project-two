@@ -3,11 +3,11 @@
 @section('titulo','Cadastro de morador')
 
 @section('content')
-<div class="container">
+<div class="container margin-top">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header bg-dark text-white">Cadastro de morador</div>
+                <div class="card-header bg-dark text-white text-center">Cadastro de morador</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('abrigo.cadastrar-morador') }}">
@@ -61,12 +61,18 @@
                                     <option value="feminino">Feminino</option>
                                   </select>
                             </div>
+                        </div>
 
-                            @error('tipo_user')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="ativo" id="ativo" {{ old('remember') ? 'checked' : '' }}>
+
+                                    <label class="form-check-label" for="ativo">
+                                        Ativo
+                                    </label>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="form-group row mb-0">

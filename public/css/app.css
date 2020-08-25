@@ -1821,7 +1821,7 @@ pre code {
 
 .table-hover tbody tr:hover {
   color: #212529;
-  background-color: rgba(0, 0, 0, 0.075);
+  background-color: rgba(0, 0, 0, 0.15);
 }
 
 .table-primary,
@@ -4415,6 +4415,7 @@ input[type=button].btn-block {
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
+  font-size: medium;
 }
 
 .nav-link:hover,

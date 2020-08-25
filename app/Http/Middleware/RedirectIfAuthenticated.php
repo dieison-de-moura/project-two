@@ -19,6 +19,7 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
+            \Session::flash('status', 'Bem vindo!'); //TODO: validar isso
             return redirect(RouteServiceProvider::HOME);
         }
 

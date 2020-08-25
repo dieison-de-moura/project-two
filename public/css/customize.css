@@ -3,6 +3,14 @@ body {
     background-color: whitesmoke;
 }
 
+div .card-header {
+    font-size: medium;
+}
+
+.margin-top {
+    margin-top: 50px;
+}
+
 .lista-footer {
     color: white;
 }
