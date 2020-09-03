@@ -54,6 +54,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'tipo_user' => ['required', 'string'],
+            'cidade' => ['required', 'string'],
         ]);
     }
 
@@ -65,10 +66,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        \Session::flash('status', 'Cadastro realizado com sucesso!');
+        session()->flash('status', 'Cadastro realizado com sucesso!');
+        session()->push('user.tipo', $data['tipo_user']);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'tipo_usuario' => $data['tipo_user'],
+            'cidade' => $data['cidade'],
             'password' => Hash::make($data['password']),
         ]);
     }

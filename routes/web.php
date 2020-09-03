@@ -23,5 +23,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/abrigo/cadastrar-morador', 'abrigoController@index');
+Route::post('/abrigo/cadastrar-morador', 'abrigoController@createMorador');
 Route::get('/abrigo/lista-moradores', 'abrigoController@lista');
 Route::post('/abrigo/cadastrar-morador', ['as' => 'abrigo.cadastrar-morador', 'uses' => 'abrigoController@createMorador']); //salvar cadastro

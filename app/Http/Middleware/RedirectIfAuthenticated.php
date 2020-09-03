@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class RedirectIfAuthenticated
 {
@@ -18,8 +19,16 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        $data = $request->all();
+        if (!empty($data) && !empty($data['email'])) {
+            $user = DB::select('select id, tipo_usuario from users where email = ?', [$data['email']]);
+
+            if (!empty($user) && !empty($user[0]->tipo_usuario) && $user[0]->tipo_usuario == 'abrigo') {
+                session()->push('tipo', $user[0]->tipo_usuario);
+                session()->push('usuarioId', $user[0]->id);
+            }
+        }
         if (Auth::guard($guard)->check()) {
-            \Session::flash('status', 'Bem vindo!'); //TODO: validar isso
             return redirect(RouteServiceProvider::HOME);
         }
 

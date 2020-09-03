@@ -35,19 +35,23 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/abrigo/cadastrar-morador') }}">
-                                Cadastrar Morador
-                            </a>
-                        </li>
+                    @auth
+                        <ul class="navbar-nav mr-auto">
+                            @if (session('tipo'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/abrigo/cadastrar-morador') }}">
+                                        Cadastrar Morador
+                                    </a>
+                                </li>
+                            @endif
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/abrigo/lista-moradores') }}">
-                                Listar Moradores
-                            </a>
-                        </li>
-                    </ul>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/abrigo/lista-moradores') }}">
+                                    Listar Moradores
+                                </a>
+                            </li>
+                        </ul>
+                    @endauth
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -90,17 +94,11 @@
         </main>
     </div>
 
-    <footer class="fixed-bottom tamanho">
-        <div class="container-fluid border border-dark bg-dark shadow">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-2">
-              </div>
-              <div class="col-md-2"></div>
-              <div class="col-md-4 lista-footer margin-direitos"><p class="direitos">© 2020 Moura Todos os direitos reservados.</p></div>
-            </div>
-          </div>
-        </div>
-      </footer>
+    <footer>
+        <nav class="navbar fixed-bottom navbar-dark bg-dark">
+            <a class="navbar-brand col-md-12 text-md-center" href="#">© 2020 Moura Todos os direitos reservados.</a>
+        </nav>
+    </footer>
+
 </body>
 </html>

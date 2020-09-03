@@ -40,6 +40,20 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="cidade" class="col-md-4 col-form-label text-md-right">{{ __('Cidade') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="cidade" type="text" class="form-control @error('cidade') is-invalid @enderror" name="cidade" value="{{ old('cidade') }}" required autocomplete="cidade" autofocus>
+
+                                @error('cidade')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="tipo_user" class="col-md-4 col-form-label text-md-right">{{ __('Tipo usuário') }}</label>
 
                             <div class="col-md-6">
