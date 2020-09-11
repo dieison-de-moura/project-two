@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('titulo','Cadastro de morador')
-
 @section('content')
 <div class="container margin-top">
     <div class="row justify-content-center">
@@ -10,7 +8,7 @@
                 <div class="card-header bg-dark text-white text-center">Cadastro de morador</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('abrigo.cadastrar-morador') }}">
+                    <form method="POST" action="{{ route('atualizar.morador', $pessoa->id) }}">
                         @csrf
 
                         @include('abrigo._form')

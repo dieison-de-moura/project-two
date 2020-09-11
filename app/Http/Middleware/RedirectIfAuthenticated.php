@@ -26,6 +26,8 @@ class RedirectIfAuthenticated
             if (!empty($user) && !empty($user[0]->tipo_usuario) && $user[0]->tipo_usuario == 'abrigo') {
                 session()->push('tipo', $user[0]->tipo_usuario);
                 session()->push('usuarioId', $user[0]->id);
+            } elseif (!empty($user)) {
+                session()->push('usuarioId', $user[0]->id);
             }
         }
         if (Auth::guard($guard)->check()) {
