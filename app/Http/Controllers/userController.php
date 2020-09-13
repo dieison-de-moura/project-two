@@ -60,6 +60,7 @@ class userController extends Controller
         $user->delete();
         session_start();
         session_destroy();
+        session()->flash('status-sucess', 'Cadastro excluído com sucesso!');
         Auth::logout();
         return redirect()->to('/home');
     }

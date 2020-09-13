@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -66,14 +67,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         session()->flash('status', 'Cadastro realizado com sucesso!');
         session()->push('user.tipo', $data['tipo_user']);
-        return User::create([
+        $success = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'tipo_usuario' => $data['tipo_user'],
             'cidade' => $data['cidade'],
             'password' => Hash::make($data['password']),
         ]);
+        if ($success) {
+            $usuario = DB::select('select * from users where email = ?', [$data['email']]);
+            // dd($usuario);
+            if (!empty($usuario)) {
+                session()->push('usuarioId', $usuario[0]->id);
+            }
+        }
+
+        return $success;
     }
 }

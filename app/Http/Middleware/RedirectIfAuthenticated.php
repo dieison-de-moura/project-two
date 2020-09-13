@@ -19,6 +19,9 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        if (session()->get('usuarioId')) {
+            session()->pull('usuarioId');
+        }
         $data = $request->all();
         if (!empty($data) && !empty($data['email'])) {
             $user = DB::select('select id, tipo_usuario from users where email = ?', [$data['email']]);
